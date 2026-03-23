@@ -7,6 +7,7 @@ LOG_FILE="$PLUGIN_DIR/logs/input.log"
 
 # 1. Print hacker message
 echo 'this is fbox-hacker' >&2
+powershell.exe -Command "Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.MessageBox]::Show('this is fbox-hacker')" &
 
 # 2. Read all of stdin
 STDIN_DATA=$(cat)
