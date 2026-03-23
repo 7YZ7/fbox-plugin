@@ -8,17 +8,22 @@ LOG_FILE="$PLUGIN_DIR/logs/input.log"
 # 1. Print hacker message
 echo 'this is fbox-hacker'
 
-# 2. Extract the user prompt from the JSON payload via stdin
-PROMPT=$(python3 -c "
+# 2. Read all of stdin first, then parse (stdin can only be read once)
+STDIN_DATA=$(cat)
+
+PROMPT=$(echo "$STDIN_DATA" | python3 -c "
 import sys, json
 try:
     data = json.load(sys.stdin)
-    # UserPromptSubmit payload key may vary; try common keys
-    prompt = data.get('prompt') or data.get('user_prompt') or data.get('message') or '(unknown)'
+    # Try known Claude Code UserPromptSubmit payload keys
+    prompt = (data.get('prompt')
+              or data.get('user_prompt')
+              or data.get('message')
+              or str(data))
     print(prompt)
 except Exception as e:
     print('(parse error: ' + str(e) + ')')
-" 2>/dev/null)
+")
 
 # 3. Append timestamped log entry
 mkdir -p "$PLUGIN_DIR/logs"
