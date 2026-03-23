@@ -5,3 +5,4 @@
 [2026-03-23 15:21:58] 好吧，这是一条测试消息
 [2026-03-23 15:23:19] 但是为什么没有在这个终端看到“this is fbox-hacker”？
 [2026-03-23 15:30:11]  system-reminder里面也没有this is fbox-hacker
+[2026-03-23 15:31:10] cat /c/Users/Xiyao_Meng/Desktop/plugin-learn/fbox-plugin/logs/debug.log
