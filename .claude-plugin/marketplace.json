@@ -1,12 +1,23 @@
 {
-  "$schema": "https://cdn.jsdelivr.net/gh/anthropics/claude-code@main/.claude/plugins/marketplace.schema.json",
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "fbox-plugin",
-  "owner": "Xiyao_Meng",
+  "description": "A minimal Claude Code plugin with all component types, built for learning.",
+  "owner": {
+    "name": "Xiyao Meng",
+    "email": ""
+  },
   "plugins": [
     {
       "name": "fbox-plugin",
-      "description": "A minimal Claude Code plugin for learning purposes.",
-      "path": ".claude-plugin/plugin.json"
+      "source": "./",
+      "description": "A minimal Claude Code plugin containing agent, skill, hook, rule, and command.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Xiyao Meng"
+      },
+      "repository": "https://github.com/7YZ7/fbox-plugin",
+      "license": "MIT",
+      "keywords": ["agent", "skill", "hook", "rule", "command", "learning"]
     }
   ]
 }
