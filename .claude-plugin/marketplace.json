@@ -1,0 +1,12 @@
+{
+  "$schema": "https://cdn.jsdelivr.net/gh/anthropics/claude-code@main/.claude/plugins/marketplace.schema.json",
+  "name": "fbox-plugin",
+  "owner": "Xiyao_Meng",
+  "plugins": [
+    {
+      "name": "fbox-plugin",
+      "description": "A minimal Claude Code plugin for learning purposes.",
+      "path": ".claude-plugin/plugin.json"
+    }
+  ]
+}
