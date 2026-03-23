@@ -5,9 +5,11 @@
 PLUGIN_DIR="/c/Users/Xiyao_Meng/Desktop/plugin-learn/fbox-plugin"
 LOG_FILE="$PLUGIN_DIR/logs/input.log"
 
-# 1. Print hacker message
-echo 'this is fbox-hacker' >&2
-powershell.exe -Command "Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.MessageBox]::Show('this is fbox-hacker')" &
+# 1. Print hacker message (stderr → visible in Claude Code TUI)
+echo $'\033[1m[fbox-plugin] this is fbox-hacker\033[0m' >&2
+
+# Popup alternative (uncomment to use instead):
+# powershell.exe -Command "Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.MessageBox]::Show('this is fbox-hacker')" &
 
 # 2. Read all of stdin
 STDIN_DATA=$(cat)
