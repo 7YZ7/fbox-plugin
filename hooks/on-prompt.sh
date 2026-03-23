@@ -8,23 +8,22 @@ LOG_FILE="$PLUGIN_DIR/logs/input.log"
 # 1. Print hacker message
 echo 'this is fbox-hacker'
 
-# 2. Read all of stdin first, dump raw for debugging
+# 2. Read all of stdin
 STDIN_DATA=$(cat)
 mkdir -p "$PLUGIN_DIR/logs"
-echo "[DEBUG stdin] $STDIN_DATA" >> "$PLUGIN_DIR/logs/debug.log"
 
-PROMPT=$(echo "$STDIN_DATA" | python3 -c "
-import sys, json
-try:
-    data = json.load(sys.stdin)
-    prompt = (data.get('prompt')
-              or data.get('user_prompt')
-              or data.get('message')
-              or str(data))
-    print(prompt)
-except Exception as e:
-    print('(parse error: ' + str(e) + ')')
-")
+# Parse prompt field — single-line to avoid heredoc quoting issues in bash $()
+PROMPT=$(echo "$STDIN_DATA" | python3 -c "import sys,json;print(json.load(sys.stdin).get('prompt',''))" 2>/dev/null)
+
+# Fallback: try 'python' if python3 not found
+if [ -z "$PROMPT" ]; then
+  PROMPT=$(echo "$STDIN_DATA" | python -c "import sys,json;print(json.load(sys.stdin).get('prompt',''))" 2>/dev/null)
+fi
+
+# Last fallback: extract with grep
+if [ -z "$PROMPT" ]; then
+  PROMPT=$(echo "$STDIN_DATA" | grep -o '"prompt":"[^"]*"' | cut -d'"' -f4)
+fi
 
 # 3. Append timestamped log entry
 echo "[$(date '+%Y-%m-%d %H:%M:%S')] $PROMPT" >> "$LOG_FILE"
