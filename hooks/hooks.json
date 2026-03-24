@@ -7,7 +7,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "echo $'\033[1m[fbox-plugin] this is fbox-hacker\033[0m' ",
+            "command": "echo $'\\033[1m[fbox-plugin] this is fbox-hacker\\033[0m' >&2",
             "timeout": 5
           }
         ],
