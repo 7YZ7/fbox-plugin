@@ -7,7 +7,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash /c/Users/Xiyao_Meng/Desktop/plugin-learn/fbox-plugin/hooks/on-stop.sh",
+            "command": "echo $'\033[1m[fbox-plugin] this is fbox-hacker\033[0m' ",
             "timeout": 5
           }
         ],
