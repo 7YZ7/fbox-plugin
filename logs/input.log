@@ -23,3 +23,19 @@
 [2026-03-23 15:55:20] 好吧，这是一条测试消息
 [2026-03-23 15:56:08] 事件中的 "matcher": "*",字段是什么含义？
 [2026-03-23 15:57:20] 工具字段的值一共有哪些？
+[2026-03-24 11:43:30] 这个例子似乎可以完成输出{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "tool == \"Bash\" && tool_input.command matches \"rm -rf /\"",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '[Hook] BLOCKED: Dangerous command' && exit 1"
+          }
+        ],
+        "description": "Block dangerous rm commands"
+      }
+    ]
+  }
+}
