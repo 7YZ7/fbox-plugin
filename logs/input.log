@@ -42,3 +42,16 @@
 [2026-03-24 12:08:25] /fbox-plugin:hello
 [2026-03-24 12:09:33] /hello-skill
 [2026-03-24 12:14:42] 好吧，这是一条测试消息
+[2026-03-24 12:17:25] 把stop改成这样可以吗"Stop": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo $'\033[1m[fbox-plugin] this is fbox-hacker\033[0m' ",
+            "timeout": 5
+          }
+        ],
+        "description": "Display hacker message after each response (TUI is static, more visible)"
+      }
+    ],
