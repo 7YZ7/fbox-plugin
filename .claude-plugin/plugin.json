@@ -2,7 +2,7 @@
   "name": "fbox-plugin",
   "version": "0.1.0",
   "description": "A minimal Claude Code plugin with all component types.",
-  "agents": ["./agents/hello-agent.md"],
-  "commands": ["./commands/"],
-  "skills": ["./skills/"]
+  "agents": ["../agents/hello-agent.md"],
+  "commands": ["../commands/"],
+  "skills": ["../skills/"]
 }
